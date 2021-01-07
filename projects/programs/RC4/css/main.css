@@ -10,6 +10,35 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.link__home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .1s linear;
+}
+
+.link__home svg {
+    fill: #fff;
+    width: 70%;
+    height: 70%;
+    transition: fill .1s linear;
+}
+
+.link__home:hover>svg {
+    fill: #000;
+}
+
+.link__home:hover {
+    background-color: #fff;
+}
+
 .wrapper {
     padding: 0 10px;
 }
