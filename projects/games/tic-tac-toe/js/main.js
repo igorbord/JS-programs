@@ -28,14 +28,23 @@ secondPlayerComputer.onclick = function () {
     secondPlayerHuman.style.display = 'inline'
     player1.style.backgroundColor = 'rgba(0,0,0,.15)'
     player2.style.backgroundColor = 'transparent'
+    valuePointPlayer1 = 0
+    valuePointPlayer2 = 0
+    pointPlayer1.textContent = valuePointPlayer1
+    pointPlayer2.textContent = valuePointPlayer2
     clearField()
 }
 
 secondPlayerHuman.onclick = function () {
     player1vsPlayer2 = true
+    player1.textContent = 'Player1'
     player2.textContent = 'Player2'
     secondPlayerComputer.style.display = 'inline'
     secondPlayerHuman.style.display = 'none'
+    valuePointPlayer1 = 0
+    valuePointPlayer2 = 0
+    pointPlayer1.textContent = valuePointPlayer1
+    pointPlayer2.textContent = valuePointPlayer2
     clearField()
 }
 
@@ -118,8 +127,6 @@ function clearField() {
         cell.classList.add('emptyCell')
     }
 
-    valuePointPlayer1 = 0
-    valuePointPlayer2 = 0
     message.style.display = 'none'
 }
 
