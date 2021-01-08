@@ -16,7 +16,7 @@ body {
 
 .js-projects-label {
     font-size: 25px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .js-projects {
@@ -26,17 +26,18 @@ body {
 }
 
 .project {
-    margin: 5px;
+    margin: 10px;
     height: 245px;
     width: 160px;
     background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.2);
+    animation: unHover-project .2s linear;
 }
 
 .project:hover {
-    position: relative;
-    top: -3px;
+    animation: hover-project .3s linear forwards;
 }
 
 .project__link {
@@ -59,4 +60,44 @@ body {
     height: 50px;
     color: #616161;
     font-size: 18px;
+}
+
+@keyframes hover-project {
+    from {
+        position: relative;
+        top: 0px;
+        transform: scale(1);
+        box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.2);
+    }
+    /* 50% {
+        top: -6px;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    } */
+    to {
+        position: relative;
+        top: -6px;
+        transform: scale(1.02);
+        box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.14)
+    }
+}
+
+@keyframes unHover-project {
+    from {
+        position: relative;
+        top: -6px;
+        transform: scale(1.02);
+        box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.14)
+    }
+    /* 50% {
+        top: -6px;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    } */
+    to {
+        position: relative;
+        top: 0px;
+        transform: scale(1);
+        box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.2);
+    }
 }
