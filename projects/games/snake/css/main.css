@@ -1,0 +1,240 @@
+@import url(reset.css);
+@font-face {
+    font-family: MyCustomFont;
+    src: url("../fonts/16579.eot");
+    src: url("../fonts/16579.ttf");
+}
+
+body {
+    background-color: #8ba768;
+    color: #31411f;
+    font-family: MyCustomFont, Impact, "Arial Black", sans-serif;
+}
+
+.link__home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #31411f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .1s linear;
+}
+
+.link__home svg {
+    fill: #31411f;
+    width: 70%;
+    height: 70%;
+    transition: fill .1s linear;
+}
+
+.link__home:hover>svg {
+    fill: #8ba768;
+}
+
+.link__home:hover {
+    background-color: #31411f;
+}
+
+.volume {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .1s linear;
+    cursor: pointer;
+}
+
+.volume__icon {
+    text-align: center;
+}
+
+.volume svg {
+    fill: #31411f;
+    width: 65%;
+    height: 65%;
+    transition: fill .1s linear;
+}
+
+.volume:hover {
+    background-color: #31411f;
+}
+
+.volume:hover svg {
+    fill: #8ba768;
+}
+
+.container, .game, .game__inner {
+    width: 100%;
+    height: 100%;
+}
+
+.game {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.game__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__field {
+    width: 606px;
+    height: 396px;
+    border: 3px solid #31411f;
+    position: relative;
+}
+
+#startMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.game__startMenu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__startMenu h1 {
+    font-size: 80px;
+}
+
+.game__startMenu h2 {
+    font-size: 30px;
+    margin: 40px 0;
+}
+
+.game__startMenu__coiseLevel #medium {
+    margin: 0 30px;
+}
+
+.game__startMenu__coiseLevel button {
+    background-color: transparent;
+    color: inherit;
+    font-size: 30px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: all .2s;
+}
+
+.game__startMenu__coiseLevel button:hover {
+    background-color: #31411f;
+    color: #8ba768;
+}
+
+.game__score {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.field {
+    line-height: 0;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 8px;
+    /* border: 1px solid #8ba768; */
+}
+
+.apple {
+    background-color: #a72b2b;
+    box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, .5);
+}
+
+.shake {
+    background-color: #31411f;
+    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, .3);
+}
+
+#endGame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.game__gameOver {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    background-color: rgba(139, 167, 104, .6);
+    cursor: pointer;
+}
+
+.game__gameOver p {
+    text-align: center;
+}
+
+.game__gameOver span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 75px;
+}
+
+@media(max-width: 630px) {
+    .game__field {
+        width: 306px;
+        height: 201px;
+    }
+    .cell {
+        width: 15px;
+        height: 15px;
+        border-radius: 5px;
+    }
+    .game__startMenu h1 {
+        font-size: 40px;
+    }
+    .game__startMenu h2 {
+        font-size: 14px;
+        margin: 20px 0;
+    }
+    .game__startMenu__coiseLevel #medium {
+        margin: 0 10px;
+    }
+    .game__startMenu__coiseLevel button {
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+    .game__gameOver {
+        font-size: 40px;
+    }
+    .game__gameOver span {
+        font-size: 45px;
+    }
+    .game__score {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+}
