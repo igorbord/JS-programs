@@ -173,4 +173,10 @@ body {
         text-transform: uppercase;
         padding: 10px 25px;
     }
+    .rc4__title {
+        font-size: 25px;
+    }
+    .link__home {
+        display: none;
+    }
 }

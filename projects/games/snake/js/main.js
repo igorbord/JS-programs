@@ -1,3 +1,5 @@
+'use strict'
+
 window.onload = (function () {
     const gameField = document.querySelector('#gameField')
     const actualScore = document.querySelector('#actualScore')
@@ -7,7 +9,6 @@ window.onload = (function () {
     const endGame = document.querySelector('#endGame')
     const volume = document.querySelector('#volume')
     const sound = document.querySelector('#sound')
-    // const startPoint 
 
     let flagVolumeOn = true
 
@@ -86,20 +87,27 @@ window.onload = (function () {
                         shape[j] = i
                     }
 
-                    let course = 'up'
-
-                    addEventListener('keydown', function (event) {
-                        if (event.key === 'ArrowUp' && course !== 'down') course = 'up'
-                        if (event.key === 'ArrowLeft' && course !== 'right') course = 'left'
-                        if (event.key === 'ArrowRight' && course !== 'left') course = 'right'
-                        if (event.key === 'ArrowDown' && course !== 'up') course = 'down'
-                    })
+                    for (let i = 0; i < shape.length; i++) {
+                        field[shape[i]] = 1
+                    }
 
                     buildApple(field)
                     drawField(field, shape)
 
-                    let intervalId = setInterval(() => {
+                    let course = 'up'
+                    let keyDown = false
+                    addEventListener('keydown', function (event) {
+                        if (keyDown) {
+                            if (event.key === 'ArrowUp' && course !== 'down') course = 'up'
+                            if (event.key === 'ArrowLeft' && course !== 'right') course = 'left'
+                            if (event.key === 'ArrowRight' && course !== 'left') course = 'right'
+                            if (event.key === 'ArrowDown' && course !== 'up') course = 'down'
+                            keyDown = false
+                        }
+                    })
 
+                    let intervalId = setInterval(() => {
+                        keyDown = true
                         if (course === 'up') shape.unshift(shape[0] - 20)
                         if (course === 'left') shape.unshift(shape[0] - 1)
                         if (course === 'right') shape.unshift(shape[0] + 1)
@@ -157,103 +165,6 @@ window.onload = (function () {
     }
 })()
 
-function playAudio(audioName) {
-    // sound.innerHTML = `<audio src="sound/${audioName}.mp3" autoplay></audio>`
-    // volume.prepend(sound)
-    sound.querySelector('#startPoint').addAtribute('autoplay')
-}
-
-function game(event, flagVolumeOn, music) {
-    let level
-    let bestScore
-    let point
-    switch (event.target.id) {
-        case 'easy': level = 400; bestScore = +localStorage.getItem('bestScoreEast') || 0; point = 5; break
-        case 'medium': level = 300; bestScore = +localStorage.getItem('bestScoreMedium') || 0; point = 6; break
-        case 'hard': level = 200; bestScore = +localStorage.getItem('bestScoreHard') || 0; point = 7; break
-        default: level = 400; bestScore = +localStorage.getItem('bestScoreEast') || 0; point = 5; break
-    }
-
-    let score = 0
-
-    favoriteScore.textContent = 'best ' + bestScore
-    actualScore.textContent = score
-
-    startMenu.hidden = true
-
-    const field = []//1 - shape, 2 - apple
-    for (let i = 0; i < 13 * 20; i++) {
-        field[i] = 0
-    }
-
-    buildField(gameField, field)
-
-    const shape = []
-    for (let i = 150, j = 0; i <= 210; i += 20, j++) {
-        shape[j] = i
-    }
-
-    let course = 'up'
-
-    addEventListener('keydown', function (event) {
-        if (event.key === 'ArrowUp' && course !== 'down') course = 'up'
-        if (event.key === 'ArrowLeft' && course !== 'right') course = 'left'
-        if (event.key === 'ArrowRight' && course !== 'left') course = 'right'
-        if (event.key === 'ArrowDown' && course !== 'up') course = 'down'
-    })
-
-    buildApple(field)
-    drawField(field, shape)
-
-    let intervalId = setInterval(() => {
-
-        if (flagVolumeOn) {
-            playAudio(music, 'move')
-        }
-
-        if (course === 'up') shape.unshift(shape[0] - 20)
-        if (course === 'left') shape.unshift(shape[0] - 1)
-        if (course === 'right') shape.unshift(shape[0] + 1)
-        if (course === 'down') shape.unshift(shape[0] + 20)
-
-        if (field[shape[0]] === 2) {
-            shape.push(shape[shape.length - 1])
-            score += point
-            actualScore.textContent = score
-            if (bestScore < score) {
-                bestScore = score
-                favoriteScore.textContent = 'best ' + bestScore
-            }
-            buildApple(field)
-        }
-
-        if (!field.includes(0)) {
-            clearInterval(intervalId)
-            showEndGameMenu('You Win!', field)
-            switch (event.target.id) {
-                case 'easy': localStorage.setItem('bestScoreEast', bestScore); break
-                case 'medium': localStorage.setItem('bestScoreMedium', bestScore); break
-                case 'hard': localStorage.setItem('bestScoreHard', bestScore); break
-                default: localStorage.setItem('bestScoreEast', bestScore); break
-            }
-        } else if (checkTheGameOver(field, course, shape)) {
-            clearInterval(intervalId)
-            showEndGameMenu('<span>Game</span>Over!', field)//<span>Game</span>Over!
-            switch (event.target.id) {
-                case 'easy': localStorage.setItem('bestScoreEast', bestScore); break
-                case 'medium': localStorage.setItem('bestScoreMedium', bestScore); break
-                case 'hard': localStorage.setItem('bestScoreHard', bestScore); break
-                default: localStorage.setItem('bestScoreEast', bestScore); break
-            }
-        } else {
-            field[shape[shape.length - 1]] = 0
-            shape.pop()
-            drawField(field, shape)
-        }
-
-    }, level);
-}
-
 function buildField(gameField, field) {
     let strbuildfield = ''
 
@@ -308,10 +219,6 @@ function checkTheGameOver(field, course, shape) {
     )
 }
 
-function clearField(field) {
-    gameField.querySelector('.field').innerHTML = ''
-}
-
 function checkTheWinGame(field) {
     return !field.includes(0)
 }
@@ -332,7 +239,7 @@ function showEndGameMenu(text, field) {
     }, 50);
 
     endGame.onclick = function () {
-        clearField(field)
+        gameField.querySelector('.field').innerHTML = ''
         endGame.hidden = true
         startMenu.hidden = false
         actualScore.textContent = ''

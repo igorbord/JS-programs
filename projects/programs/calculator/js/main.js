@@ -1,3 +1,5 @@
+'use strict'
+
 const calc = document.querySelector('.calc')
 const input = calc.querySelector('#input')
 const numbers = calc.querySelectorAll('.number')
@@ -52,7 +54,7 @@ for (let topBtn of topBtns) {
                 clearCalc()
                 break
             case 'plusMinus':
-                input.value = +input.value * (-1)
+                input.value = String(+input.value.replace(',', '.') * (-1)).replace('.', ',')
                 break
             case 'persent':
                 const charAct = strResult.slice(-1)

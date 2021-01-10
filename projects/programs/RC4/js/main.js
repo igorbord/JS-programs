@@ -1,3 +1,5 @@
+'use strict'
+
 const textareaRC4 = document.querySelector('#text')
 const textkeyRC4 = document.querySelector('#key')
 const selectN = document.querySelector('#selectN')
