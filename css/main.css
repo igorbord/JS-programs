@@ -34,6 +34,11 @@ body {
     animation: unHover-project .1s linear;
 }
 
+.project-layout {
+    height: 460px;
+    width: 340px;
+}
+
 .project:hover {
     animation: hover-project .15s linear forwards;
 }

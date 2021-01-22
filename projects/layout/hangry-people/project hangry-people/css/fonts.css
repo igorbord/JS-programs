@@ -1,0 +1,39 @@
+@font-face {
+    font-family: Banny;
+    src: url("../fonts/Banny-Round.eot");
+    src: url("../fonts/Banny-Round.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Banny;
+    src: url("../fonts/Banny-BoldRound.eot");
+    src: url("../fonts/Banny-BoldRound.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Banny;
+    src: url("../fonts/Banny-LightRound.eot");
+    src: url("../fonts/Banny-LightRound.ttf");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Regular.eot");
+    src: url("../fonts/OpenSans-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Bold.eot");
+    src: url("../fonts/OpenSans-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
