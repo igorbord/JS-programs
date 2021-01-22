@@ -21,7 +21,7 @@ window.onload = () => {
         if (event.target.tagName === 'A') {
             event.preventDefault()
 
-            const sectionScroll = document.querySelector(`section[class*="${event.target.hash.slice(1)}"]`)
+            const sectionScroll = document.querySelector(`section[class$="${event.target.hash.slice(1)}"]`)
 
             scrollWebsite(sectionScroll.offsetTop, 300)
         }
